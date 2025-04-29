@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'Dead Wood Rustic';
+    src: url('/public/fonts/Rustic-dyJl.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  /* Optional: create a class */
+  .deadwood-font {
+    font-family: 'Dead Wood Rustic', sans-serif;
+  }
+  

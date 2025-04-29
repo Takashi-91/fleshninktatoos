@@ -1,101 +1,71 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Button } from "@heroui/button";
-import { Kbd } from "@heroui/kbd";
-import { Link } from "@heroui/link";
-import { Input } from "@heroui/input";
-import {
-  Navbar as HeroUINavbar,
-  NavbarBrand,
-  NavbarContent,
-  NavbarItem,
-  NavbarMenuToggle,
-  NavbarMenu,
-  NavbarMenuItem,
-} from "@heroui/navbar";
-import { link as linkStyles } from "@heroui/theme";
-import clsx from "clsx";
-
-import { siteConfig } from "@/config/site";
-import { ThemeSwitch } from "@/components/theme-switch";
-import {
-  TwitterIcon,
-  GithubIcon,
-  DiscordIcon,
-  HeartFilledIcon,
-  SearchIcon,
-} from "@/components/icons";
-import { Logo } from "@/components/icons";
+import { Link } from 'react-router-dom';
+import { Button } from '@heroui/button';
+import { Menu } from 'lucide-react';
 
 export const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      const offset = window.scrollY;
+      if (offset > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
-  const searchInput = (
-    <Input
-      aria-label="Search"
-      classNames={{
-        inputWrapper: "bg-default-100",
-        input: "text-sm",
-      }}
-      endContent={
-        <Kbd className="hidden lg:inline-block" keys={["command"]}>
-          K
-        </Kbd>
-      }
-      labelPlacement="outside"
-      placeholder="Search..."
-      startContent={
-        <SearchIcon className="text-base text-default-400 pointer-events-none flex-shrink-0" />
-      }
-      type="search"
-    />
-  );
+  const navLinks = [
+    { name: 'Home', path: '/' },
+    { name: 'About', path: '/about' },
+    { name: 'Gallery', path: '/gallery' },
+    { name: 'Services', path: '/services' },
+    { name: 'Contact', path: '/contact' },
+  ];
+
 
   return (
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white shadow-md' : 'bg-transparent'
+        scrolled ? 'bg-white shadow-md' : 'md:bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
        
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center space-x-3">
-            <div className="h-14 w-14 bg-[url('/imgs/logo.png')] bg-cover bg-center" />
+            <div className="h-14 w-14 bg-[url('/imgs/logo-3.png')] bg-cover bg-center" />
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="text-2xl font-bold text-black"
+              className="text-1xl font-bold text-black"
             >
-              FleshInk<span className="text-green-600">Tattoos</span>
+              Flesh-n-Ink<span className="text-green-600"> Tattoo Studio</span>
             </motion.div>
           </div>
 
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-center space-x-8">
-              {['Home', 'Gallery', 'Artists', 'Services', 'Contact'].map((item) => (
-                <motion.a
-                  key={item}
-                  whileHover={{ scale: 1.05 }}
-                  className="text-black hover:text-green-600 transition-colors"
-                  href={`#${item.toLowerCase()}`}
-                >
-                  {item}
-                </motion.a>
-              ))}
-            </div>
-          </div>
 
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center space-x-8">
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                to={link.path}
+                className="text-black hover:text-tattoo link-hover font-medium"
+              >
+                {link.name}
+              </Link>
+            ))}
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -103,8 +73,36 @@ export const Navbar = () => {
           >
             Book Now
           </motion.button>
+          </nav>
+
+          {/* Mobile Menu Button */}
+          <Button
+            variant="ghost"
+            className="md:hidden p-2"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            <Menu className="h-6 w-6" />
+          </Button>
         </div>
+
+        {/* Mobile Navigation */}
+        {isOpen && (
+          <nav className="md:hidden pt-4 pb-2 animate-fade-in">
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                to={link.path}
+                className="block py-2 text-black hover:text-tattoo"
+                onClick={() => setIsOpen(false)}
+              >
+                {link.name}
+              </Link>
+            ))}
+          </nav>
+        )}
       </div>
+            
+          
     </motion.nav>
   );
 };
