@@ -3,7 +3,6 @@ import { useRef, useState, useEffect } from 'react';
 import '../styles/fonts.css';
 
 const Hero = () => {
-  const [isVisible, setIsVisible] = useState<boolean>(true);
   const [showContent, setShowContent] = useState<boolean>(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -11,7 +10,6 @@ const Hero = () => {
     const video = videoRef.current;
 
     const handleVideoEnd = () => {
-      setIsVisible(false);
       setShowContent(true);
     };
 
