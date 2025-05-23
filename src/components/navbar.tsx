@@ -9,6 +9,8 @@ export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
+
+    
     const handleScroll = () => {
       const offset = window.scrollY;
       if (offset > 50) {
@@ -23,6 +25,7 @@ export const Navbar = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+  
 
   const navLinks = [
     { name: 'Home', path: '/' },
@@ -37,9 +40,10 @@ export const Navbar = () => {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white shadow-md' : 'md:bg-transparent'
-      }`}
+     className={`fixed w-full z-50 transition-all duration-300 ${
+  scrolled ? 'bg-white shadow-md' : 'bg-white md:bg-transparent'
+}`}
+
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
        
@@ -48,7 +52,10 @@ export const Navbar = () => {
             <div className="h-14 w-14 bg-[url('/imgs/logo-3.png')] bg-cover bg-center" />
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="text-1xl font-bold text-black"
+              className={`text-1xl font-bold text-black
+            ${
+        scrolled ? 'text-black' : 'md:text-white'
+      }`}
             >
               Flesh-n-Ink<span className="text-green-600"> Tattoo Studio</span>
             </motion.div>
@@ -61,8 +68,11 @@ export const Navbar = () => {
               <Link
                 key={link.name}
                 to={link.path}
-                className="text-black hover:text-tattoo link-hover font-medium"
-              >
+                className={`hover:text-tattoo link-hover font-medium
+              ${
+        scrolled ? 'text-black' : 'md:text-white'
+      }`}
+      >
                 {link.name}
               </Link>
             ))}
@@ -93,6 +103,8 @@ export const Navbar = () => {
                 key={link.name}
                 to={link.path}
                 className="block py-2 text-black hover:text-tattoo"
+                
+
                 onClick={() => setIsOpen(false)}
               >
                 {link.name}
