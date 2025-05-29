@@ -49,7 +49,9 @@ export const Navbar = () => {
        
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center space-x-3">
-            <div className="h-14 w-14 bg-[url('/imgs/logo-3.png')] bg-cover bg-center" />
+            <div className="h-14 w-14 bg-[url('/imgs/logo-3.png')] bg-cover bg-center inset-0 rounded-full border-1 border-green-500 bg-white">
+            
+            </div>
             <motion.div
               whileHover={{ scale: 1.05 }}
               className={`text-1xl font-bold text-black
@@ -76,13 +78,7 @@ export const Navbar = () => {
                 {link.name}
               </Link>
             ))}
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-green-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-green-700 transition-colors"
-          >
-            Book Now
-          </motion.button>
+         
           </nav>
 
           {/* Mobile Menu Button */}

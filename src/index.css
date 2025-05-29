@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes neon-blink {
+    0%, 100% {
+      box-shadow: 0 0 15px 5px rgba(0, 255, 0, 0.6);
+    }
+    50% {
+      box-shadow: 0 0 5px 2px rgba(0, 255, 0, 0.1);
+    }
+  }
+
+  .animate-neon-blink {
+    animation: neon-blink 3s ease-in-out forwards;
+  }
+  
 @layer base {
   html {
     scroll-behavior: smooth;

@@ -11,7 +11,14 @@
     "plugin:react-hooks/recommended",
     "plugin:jsx-a11y/recommended"
   ],
-  "plugins": ["react", "unused-imports", "import", "@typescript-eslint", "jsx-a11y", "prettier"],
+  "plugins": [
+    "react",
+    "unused-imports",
+    "import",
+    "@typescript-eslint",
+    "jsx-a11y",
+    "prettier"
+  ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
@@ -27,24 +34,33 @@
   },
   "rules": {
     "no-console": "warn",
+
     "react/prop-types": "off",
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off",
     "react-hooks/exhaustive-deps": "off",
+
     "jsx-a11y/click-events-have-key-events": "warn",
     "jsx-a11y/interactive-supports-focus": "warn",
+
     "prettier/prettier": "warn",
+
+    // Disable built-in unused rules (we’ll use unused-imports instead)
     "no-unused-vars": "off",
-    "unused-imports/no-unused-vars": "off",
-    "unused-imports/no-unused-imports": "warn",
-    "@typescript-eslint/no-unused-vars": [
+    "@typescript-eslint/no-unused-vars": "off",
+
+    // Enable unused-imports cleanup
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": [
       "warn",
       {
+        "vars": "all",
+        "varsIgnorePattern": "^_",
         "args": "after-used",
-        "ignoreRestSiblings": false,
-        "argsIgnorePattern": "^_.*?$"
+        "argsIgnorePattern": "^_"
       }
     ],
+
     "import/order": [
       "warn",
       {
@@ -68,6 +84,7 @@
         "newlines-between": "always"
       }
     ],
+
     "react/self-closing-comp": "warn",
     "react/jsx-sort-props": [
       "warn",
@@ -78,10 +95,19 @@
         "reservedFirst": true
       }
     ],
+
     "padding-line-between-statements": [
       "warn",
-      {"blankLine": "always", "prev": "*", "next": "return"},
-      {"blankLine": "always", "prev": ["const", "let", "var"], "next": "*"},
+      {
+        "blankLine": "always",
+        "prev": "*",
+        "next": "return"
+      },
+      {
+        "blankLine": "always",
+        "prev": ["const", "let", "var"],
+        "next": "*"
+      },
       {
         "blankLine": "any",
         "prev": ["const", "let", "var"],
