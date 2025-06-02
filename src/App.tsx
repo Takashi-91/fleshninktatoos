@@ -15,8 +15,9 @@ function App() {
         <Route path="/" element={
           <>
             <Hero />
+                <About/>
             <ArtistSection />
-            <About/>
+        
             <ServicesSection />
             <Gallery/>
             <Contact/>

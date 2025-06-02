@@ -2,16 +2,16 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 
 const images = [
-  { id: 1, src: '/gallery/photo1.jpg' },
-  { id: 2, src: '/gallery/photo2.jpg' },
-  { id: 3, src: '/gallery/photo3.jpg' },
-  { id: 4, src: '/gallery/photo4.jpg' },
-  { id: 5, src: '/gallery/photo5.jpg' },
-  { id: 6, src: '/gallery/photo6.jpg' },
-  { id: 7, src: '/gallery/photo7.jpg' },
-  { id: 8, src: '/gallery/photo8.jpg' },
-  { id: 9, src: '/gallery/photo9.jpg' },
-  { id: 10, src: '/gallery/photo10.jpg' },
+  { id: 1, src: '/imgs/pic1.jpg' },
+  { id: 2, src: '/imgs/pic2.jpg' },
+  { id: 3, src: '/imgs/pic3.jpg' },
+  { id: 4, src: '/imgs/pic4.jpg' },
+  { id: 5, src: '/imgs/pic5.jpg' },
+  { id: 6, src: '/imgs/pic6.jpg' },
+  { id: 7, src: '/imgs/pic7.jpg' },
+  { id: 8, src: '/imgs/pic8.jpg' },
+  { id: 9, src: '/imgs/pic9.jpg' },
+  { id: 10, src: '/imgs/pic10.jpg' },
 ];
 
 const Gallery = () => {
@@ -41,6 +41,8 @@ const Gallery = () => {
 
   return (
     <section className="py-20 bg-black min-h-screen relative" id="gallery">
+      <div className="absolute inset-0 bg-[url('/imgs/bg-1.jpg')] bg-cover bg-center opacity-20" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-black/80 to-black/95" />
       {/* Background gradient */}
       <motion.div
         initial={{ opacity: 0 }}

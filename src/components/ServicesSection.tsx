@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { Scissors, SquarePen, PenTool } from 'lucide-react';
 
@@ -21,66 +22,292 @@ const services = [
     title: 'Touch-Ups',
     description: 'Refresh and revitalize your existing tattoos to maintain their vibrant appearance.',
     icon: PenTool,
-    cover: '/imgs/pic-3.png',
+    cover: '/imgs/bg-image-1.jpg',
   },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.3,
+      delayChildren: 0.2
+    }
+  }
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, x: -50, scale: 0.9 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    scale: 1,
+    transition: {
+      duration: 0.8,
+      ease: "easeOut"
+    }
+  }
+};
+
+const textVariants = {
+  hidden: { opacity: 0, x: 50 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.8,
+      ease: "easeOut"
+    }
+  }
+};
+
 const ServicesSection = () => {
   return (
-    <section className="relative py-20 bg-[url('/imgs/bg-2.png')] bg-cover bg-center  overflow-hidden">
-       <div className="absolute inset-0 z-0 bg-gradient-to-b from-black/100 via-black/60 to-black/100" />
-      <div className="flex flex-col items-center justify-center mb-16 relative">
-        <h2 className="text-3xl sm:text-5xl md:text-6xl md:mr-[600px] font-extrabold uppercase text-white text-center leading-tight deadwood-font z-10">
-          <span>Our Services</span>
-        </h2>
-      </div>
+    <section className="relative py-24 bg-gradient-to-br from-slate-900 via-black to-slate-800 overflow-hidden">
+      {/* Animated background elements */}
+<div className="absolute inset-0 bg-[url('/imgs/bg-1.jpg')] bg-cover bg-center opacity-20" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-black/80 to-black/95" />
+      
+      {/* Floating orbs for modern effect */}
+      <motion.div
+        animate={{ 
+          x: [0, -100, 0],
+          y: [0, 50, 0],
+          opacity: [0.2, 0.4, 0.2]
+        }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-32 right-20 w-40 h-40 bg-green-500/20 rounded-full blur-xl"
+      />
+      <motion.div
+        animate={{ 
+          x: [0, 80, 0],
+          y: [0, -60, 0],
+          opacity: [0.3, 0.6, 0.3]
+        }}
+        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute bottom-32 left-20 w-32 h-32 bg-blue-500/20 rounded-full blur-xl"
+      />
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-12">
+        {/* Header Section */}
+        <motion.div 
+          initial={{ opacity: 0, y: -30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-20"
+        >
+          <motion.h2 
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-4xl sm:text-6xl lg:text-7xl font-extrabold uppercase text-white leading-tight deadwood-font relative mb-6"
+          >
+            <span className="bg-gradient-to-r from-white via-green-100 to-white bg-clip-text text-transparent">
+              OUR
+            </span>
+            <br />
+            <span className="bg-gradient-to-r from-green-400 to-green-600 bg-clip-text text-transparent">
+              SERVICES
+            </span>
+            <motion.div
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              transition={{ duration: 1, delay: 0.5 }}
+              className="absolute -bottom-2 left-1/2 -translate-x-1/2 h-1 bg-gradient-to-r from-green-400 to-green-600 origin-center w-48"
+            />
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-lg text-gray-300 max-w-2xl mx-auto"
+          >
+            Professional tattoo services delivered with precision, creativity, and care in the heart of Pretoria.
+          </motion.p>
+        </motion.div>
+
+        <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-16">
           
-          {/* Left: Cards with background images */}
-          <div className="w-full md:w-1/2 flex flex-col items-center md:items-start space-y-6">
-            {services.map((service) => (
-              <Card
+          {/* Left: Service Cards */}
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            className="w-full lg:w-1/2 space-y-8"
+          >
+            {services.map((service, idx) => (
+              <motion.div
                 key={service.id}
-                className="relative w-full rounded-xl overflow-hidden shadow-lg"
-                style={{
-                  backgroundImage: `url(${service.cover})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
+                variants={cardVariants}
+                whileHover={{ 
+                  scale: 1.02,
+                  y: -5,
+                  transition: { duration: 0.3 }
                 }}
+                className="group"
               >
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-black/60 z-0" />
+                <Card
+                  className="relative rounded-3xl overflow-hidden shadow-2xl border-0 bg-white/10 backdrop-blur-lg border border-white/20"
+                  style={{
+                    backgroundImage: `url(${service.cover})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                  }}
+                >
+                  {/* Gradient Overlays */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                {/* Content */}
-                <CardContent className="relative z-10 flex items-start space-x-4 p-6">
-                  <service.icon className="h-10 w-10 text-green-500 mt-1" />
-                  <div>
-                    <h3 className="text-xl font-bold text-white">{service.title}</h3>
-                    <p className="text-white text-sm mt-2">{service.description}</p>
-                  </div>
-                </CardContent>
-              </Card>
+                  {/* Content */}
+                  <CardContent className="relative z-10 p-8">
+                    <div className="flex items-start space-x-6">
+                      {/* Animated Icon */}
+                      <motion.div
+                        whileHover={{ scale: 1.2, rotate: 15 }}
+                        className="flex-shrink-0 w-16 h-16 bg-green-500/20 backdrop-blur-sm rounded-2xl flex items-center justify-center border border-green-400/30 group-hover:bg-green-500/30 transition-colors duration-300"
+                      >
+                        <service.icon className="h-8 w-8 text-green-400 group-hover:text-green-300 transition-colors" />
+                      </motion.div>
+                      
+                      <div className="flex-1">
+                        <motion.h3 
+                          className="text-2xl font-bold text-white mb-3 deadwood-font uppercase tracking-wider"
+                          whileHover={{ scale: 1.02 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          {service.title}
+                        </motion.h3>
+                        <p className="text-gray-200 leading-relaxed group-hover:text-white transition-colors duration-300">
+                          {service.description}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Animated border */}
+                    <motion.div
+                      className="absolute inset-0 rounded-3xl border-2 border-green-400/0 group-hover:border-green-400/50 transition-all duration-500"
+                      whileHover={{
+                        boxShadow: "0 0 30px rgba(34, 197, 94, 0.3)"
+                      }}
+                    />
+                  </CardContent>
+                </Card>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
-          {/* Right: Studio info */}
-          <div className="w-full md:w-1/2 flex flex-col items-center md:items-end text-right">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold uppercase text-white mb-6 deadwood-font">
-              Proudly South African Tattoo Studio in Pretoria
-            </h2>
-            <p className="text-white font-bold text-sm sm:text-base md:text-lg mb-8 max-w-lg leading-relaxed uppercase">
-              Rooted in the heart of Pretoria, our studio celebrates local creativity and cultural expression through the art of tattooing. We are a proudly South African-owned business offering a safe, clean, and professional space where your ideas come to life.
-            </p>
-          </div>
+          {/* Right: Studio Info */}
+          <motion.div 
+            variants={textVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="w-full lg:w-1/2 flex flex-col items-center lg:items-end text-center lg:text-right relative"
+          >
+            {/* Floating Logo */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.5, rotate: -180 }}
+              whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+              transition={{ duration: 1, delay: 0.3 }}
+              className="relative mb-8"
+            >
+              <div className="h-32 w-32 lg:h-48 lg:w-48 bg-[url('/imgs/logo-3.png')] bg-cover bg-center rounded-full border-4 bg-white border-white/30 backdrop-blur-sm shadow-2xl" />
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                className="absolute inset-0 border-2 border-green-400/30 rounded-full"
+              />
+              {/* Pulse effect */}
+              <motion.div
+                animate={{ 
+                  scale: [1, 1.1, 1],
+                  opacity: [0.5, 0.8, 0.5]
+                }}
+                transition={{ duration: 3, repeat: Infinity }}
+                className="absolute inset-0 border-2 border-green-400/20 rounded-full"
+              />
+            </motion.div>
+
+            <motion.h2 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-3xl sm:text-4xl lg:text-5xl font-extrabold uppercase text-white mb-8 deadwood-font leading-tight"
+            >
+              <span className="bg-gradient-to-r from-green-400 to-green-600 bg-clip-text text-transparent">
+                PROUDLY
+              </span>
+              <br />
+              <span className="text-white">
+                SOUTH AFRICAN
+              </span>
+              <br />
+              <span className="text-sm font-normal text-gray-300 normal-case tracking-wide">
+                TATTOO STUDIO IN PRETORIA
+              </span>
+            </motion.h2>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="relative"
+            >
+              <div className="absolute inset-0" />
+              <p className="text-white text-base lg:text-lg leading-relaxed max-w-lg p-6 rounded-2xl">
+                <span className="text-green-400 font-semibold">Rooted in the heart of Pretoria</span>, our studio celebrates local creativity and cultural expression through the art of tattooing. We are a proudly South African-owned business offering a safe, clean, and professional space where your ideas come to life.
+              </p>
+            </motion.div>
+
+            {/* Decorative elements */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.6 }}
+              className="flex space-x-3 mt-8"
+            >
+              {[...Array(3)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  animate={{ 
+                    y: [0, -10, 0],
+                    opacity: [0.5, 1, 0.5]
+                  }}
+                  transition={{ 
+                    duration: 2, 
+                    repeat: Infinity, 
+                    delay: i * 0.4 
+                  }}
+                  className="w-4 h-4 bg-green-400 rounded-full"
+                />
+              ))}
+            </motion.div>
+          </motion.div>
         </div>
-      </div>
 
-      {/* Logo */}
-      <span className="absolute right-0 top-1/2 -translate-y-1/2 z-0">
-        <div className="hidden md:block h-28 w-28 md:mt-[500px] md:mr-52 md:h-40 md:w-40 bg-[url('/imgs/logo-3.png')] bg-cover bg-center rounded-full border-2 border-white mb-6" />
-      </span>
+        {/* Bottom decorative wave */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+          className="flex justify-center mt-20"
+        >
+          <svg width="200" height="60" viewBox="0 0 200 60" className="text-green-400">
+            <motion.path
+              initial={{ pathLength: 0 }}
+              whileInView={{ pathLength: 1 }}
+              transition={{ duration: 2, delay: 1 }}
+              d="M10 30 Q50 10 100 30 Q150 50 190 30"
+              stroke="currentColor"
+              strokeWidth="3"
+              fill="none"
+              strokeLinecap="round"
+            />
+          </svg>
+        </motion.div>
+      </div>
     </section>
   );
 };

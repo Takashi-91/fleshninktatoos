@@ -77,25 +77,11 @@ export const Navbar = () => {
             transition={{ type: "spring", stiffness: 400 }}
           >
             <motion.div 
-              className="relative h-14 w-14 bg-[url('/imgs/logo-3.png')] bg-cover bg-center inset-0 rounded-full border-2 border-green-500 bg-white"
+              className="relative h-14 w-14 bg-[url('/imgs/logo-3.png')] bg-cover bg-center inset-0 rounded-full border-2 bg-white"
               whileHover={{ rotate: 360 }}
-              transition={{ duration: 0.8, ease: "easeInOut" }}
+              transition={{ duration: 0.0, ease: "easeInOut" }}
             >
-              <motion.div
-                className="absolute inset-0 rounded-full"
-                animate={{
-                  boxShadow: [
-                    "0 0 0 0 rgba(16, 185, 129, 0)",
-                    "0 0 0 10px rgba(16, 185, 129, 0.2)",
-                    "0 0 0 0 rgba(16, 185, 129, 0)"
-                  ]
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              />
+              
             </motion.div>
             <motion.div
               whileHover={{ scale: 1.05 }}

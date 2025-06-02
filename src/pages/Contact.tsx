@@ -1,155 +1,181 @@
-import { motion } from 'framer-motion';
-import React, { useState } from 'react';
+import { motion } from 'framer-motion'; 
+import React from 'react';
+import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaInstagram, FaFacebookF, FaWhatsapp, FaClock } from 'react-icons/fa';
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.3
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30, scale: 0.9 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.8,
+      ease: "easeOut"
+    }
+  }
+};
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus('idle');
-
-    try {
-      // TODO: Replace with your actual form submission logic
-      await new Promise(resolve => setTimeout(resolve, 1000)); // Simulated API call
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', message: '' });
-    } catch (error) {
-      setSubmitStatus('error');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
- 
   return (
-    <section className="relative min-h-screen bg-[url('/imgs/bg-2.png')] bg-cover bg-center flex flex-col justify-center items-center py-16 px-4" id="contact">
-      
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/30 z-0" />
+    <section className="relative min-h-screen bg-gradient-to-br from-slate-900 via-black to-slate-800 py-24 px-4 overflow-hidden" id="contact">
+      <div className="absolute inset-0 bg-[url('/imgs/bg-1.jpg')] bg-cover bg-center opacity-20" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-black/80 to-black/95" />
 
-      {/* Content Container */}
+      <motion.div
+        animate={{ x: [0, 120, 0], y: [0, -60, 0], opacity: [0.2, 0.5, 0.2] }}
+        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-20 right-20 w-48 h-48 bg-green-500/20 rounded-full blur-xl"
+      />
+      <motion.div
+        animate={{ x: [0, -80, 0], y: [0, 80, 0], opacity: [0.3, 0.6, 0.3] }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute bottom-32 left-20 w-40 h-40 bg-blue-500/20 rounded-full blur-xl"
+      />
+
       <div className="relative z-10 w-full flex flex-col items-center">
-        <motion.h2 
-          initial={{ opacity: 0, y: 20 }}
+        <motion.div 
+          initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-3xl sm:text-5xl mb-5 md:text-6xl md:mr-[600px] md:mb-20 font-extrabold uppercase text-white text-center leading-tight deadwood-font"
+          className="text-center mb-20"
         >
-          <span>Contact Us</span>
-        </motion.h2>
-
-        <div className="max-w-6xl w-full flex flex-col md:flex-row items-center md:items-start gap-12">
-          {/* Left: Polaroid images */}
-          <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="flex flex-col items-center md:items-start relative"
+          <motion.h2 
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-4xl sm:text-6xl lg:text-7xl font-extrabold uppercase text-white leading-tight deadwood-font relative mb-6"
           >
-            <div className="bg-white border-4 border-black rounded-xl shadow-2xl w-60 h-60 flex items-center justify-center mb-[-40px] z-10 rotate-2 relative">
-              <img src="/imgs/contact-map.jpg" alt="Map location" className="w-full h-full object-cover rounded-lg" />
+            <span className="bg-gradient-to-r from-white via-green-100 to-white bg-clip-text text-transparent">CONTACT</span>
+            <br />
+            <span className="bg-gradient-to-r from-green-400 to-green-600 bg-clip-text text-transparent">US</span>
+            <motion.div
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              transition={{ duration: 1, delay: 0.5 }}
+              className="absolute -bottom-2 left-1/2 -translate-x-1/2 h-1 bg-gradient-to-r from-green-400 to-green-600 origin-center w-40"
+            />
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-lg text-gray-300 max-w-2xl mx-auto"
+          >
+            Ready to start your tattoo journey? Get in touch with us and let's bring your vision to life.
+          </motion.p>
+        </motion.div>
+
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="max-w-7xl w-full flex flex-col lg:flex-row items-start gap-12 lg:gap-8"
+        >
+          {/* Left Column: Contact Info */}
+          <motion.div variants={itemVariants} className="flex-1 space-y-6">
+            <div className="space-y-4 w-full mr-32 md:w-1/2">
+              {[{ icon: FaMapMarkerAlt, label: "Address", value: "123 Ink Street, Pretoria, 0001", color: "from-red-500 to-red-600" },
+                { icon: FaPhone, label: "Phone", value: "+27 (012) 345-6789", color: "from-green-500 to-green-600" },
+                { icon: FaEnvelope, label: "Email", value: "info@fleshinktattoos.com", color: "from-blue-500 to-blue-600" },
+                { icon: FaClock, label: "Hours", value: "Mon-Sat: 9AM-6PM", color: "from-purple-500 to-purple-600" }].map((contact, idx) => (
+                <motion.div 
+                  key={idx}
+                  whileHover={{ x: 10, scale: 1.02 }}
+                  className="flex items-center space-x-4 p-4 rounded-2xl bg-white/10 backdrop-blur-lg border border-white/20 shadow-lg group hover:bg-white/15 transition-all duration-300"
+                >
+                  <div className={`w-12 h-12 bg-gradient-to-br ${contact.color} rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                    <contact.icon className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <p className="text-gray-400 text-xs uppercase tracking-wider">{contact.label}</p>
+                    <p className="text-white font-semibold">{contact.value}</p>
+                  </div>
+                </motion.div>
+              ))}
             </div>
-            <div className="bg-white border-4 border-black rounded-xl shadow-2xl w-60 h-44 flex items-center justify-center mt-[-20px] -rotate-3 relative z-0">
-              <img src="/imgs/contact-studio.jpg" alt="Studio interior" className="w-full h-full object-cover rounded-lg" />
-              <span className="absolute -top-3 left-1/2 -translate-x-1/2" aria-hidden="true">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="9" cy="9" r="8" fill="#e3342f" stroke="#fff" strokeWidth="2" />
-                </svg>
-              </span>
+
+            <div className="pt-4">
+              <h4 className="text-lg font-bold text-white mb-4 deadwood-font uppercase">Follow Us</h4>
+              <div className="flex space-x-4">
+                {[{ icon: FaInstagram, href: "#", color: "from-pink-500 to-purple-600" },
+                  { icon: FaFacebookF, href: "#", color: "from-blue-500 to-blue-600" },
+                  { icon: FaWhatsapp, href: "#", color: "from-green-500 to-green-600" }].map((social, idx) => (
+                  <motion.a
+                    key={idx}
+                    href={social.href}
+                    whileHover={{ scale: 1.2, rotate: 15 }}
+                    whileTap={{ scale: 0.9 }}
+                    className={`w-12 h-12 bg-gradient-to-br ${social.color} rounded-full flex items-center justify-center shadow-lg hover:shadow-2xl transition-all duration-300`}
+                  >
+                    <social.icon className="w-5 h-5 text-white" />
+                  </motion.a>
+                ))}
+              </div>
             </div>
           </motion.div>
 
-          {/* Right: Contact Form */}
-          <motion.div 
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="flex-1 flex flex-col justify-center items-start md:ml-52 text-left"
-          >
-            <div className="mb-6 text-white text-base md:text-lg space-y-2">
-              <div><span className="font-bold">Address:</span> 123 Ink Street, Tattoo City, TC 12345</div>
-              <div><span className="font-bold">Phone:</span> +1 (555) 123-4567</div>
-              <div><span className="font-bold">Email:</span> info@fleshinktattoos.com</div>
+          {/* Right Column: QR Code */}
+          <motion.div variants={itemVariants} className="flex-1 w-full max-w-md">
+            <div className="relative flex flex-col items-center justify-center bg-[url('/imgs/contact-form-bg.jpg')] bg-cover bg-center rounded-3xl p-8 lg:p-12 shadow-lg border border-white/20 backdrop-blur-lg min-h-[400px]">
+              <img 
+                src="/imgs/contact-qr.png" 
+                alt="Scan QR to contact" 
+                className="w-48 h-48 object-contain rounded-xl border-4 border-white shadow-xl mb-6" 
+              />
+              <p className="text-white text-center text-lg">Scan to connect with us instantly</p>
             </div>
 
-            <form onSubmit={handleSubmit} className="w-full max-w-md space-y-4">
-              <div>
-                <label htmlFor="name" className="block text-sm font-bold text-white mb-1">Name</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="w-full rounded-md border border-gray-400 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600 bg-white text-black"
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.8 }}
+              className="flex justify-center mt-8"
+            >
+              <svg width="100" height="40" viewBox="0 0 100 40" fill="none">
+                <motion.path 
+                  initial={{ pathLength: 0 }}
+                  whileInView={{ pathLength: 1 }}
+                  transition={{ duration: 2, delay: 1 }}
+                  d="M5 30 Q25 10 50 25 Q75 40 95 20" 
+                  stroke="#16a34a" 
+                  strokeWidth="2" 
+                  fill="none" 
+                  strokeLinecap="round"
                 />
-              </div>
-              <div>
-                <label htmlFor="email" className="block text-sm font-bold text-white mb-1">Email</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full rounded-md border border-gray-400 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600 bg-white text-black"
-                />
-              </div>
-              <div>
-                <label htmlFor="message" className="block text-sm font-bold text-white mb-1">Message</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows={4}
-                  className="w-full rounded-md border border-gray-400 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600 bg-white text-black"
-                />
-              </div>
-
-              {submitStatus === 'success' && (
-                <div className="text-green-500 text-sm">Message sent successfully!</div>
-              )}
-              {submitStatus === 'error' && (
-                <div className="text-red-500 text-sm">Failed to send message. Please try again.</div>
-              )}
-
-              <motion.button
-                type="submit"
-                disabled={isSubmitting}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="bg-green-600 text-white px-6 py-2 rounded-full font-bold uppercase tracking-widest hover:bg-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {isSubmitting ? 'Sending...' : 'Send Message'}
-              </motion.button>
-            </form>
-
-            <span className="mt-6" aria-hidden="true">
-              <svg width="80" height="32" viewBox="0 0 80 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 27 Q20 10 30 25 Q40 40 55 10 Q60 5 75 27" stroke="#e3342f" strokeWidth="2.5" fill="none" />
               </svg>
-            </span>
+            </motion.div>
           </motion.div>
-        </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1 }}
+          className="flex justify-center mt-20"
+        >
+          <div className="flex space-x-3">
+            {[...Array(5)].map((_, i) => (
+              <motion.div
+                key={i}
+                animate={{ scale: [1, 1.3, 1], opacity: [0.4, 1, 0.4] }}
+                transition={{ duration: 2, repeat: Infinity, delay: i * 0.2 }}
+                className="w-3 h-3 bg-green-400 rounded-full"
+              />
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );
