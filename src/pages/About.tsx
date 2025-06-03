@@ -26,7 +26,7 @@ const itemVariants = {
 
 const About = () => {
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-slate-900 via-black to-slate-800 flex flex-col justify-center items-center py-24 px-4 overflow-hidden">
+    <section id="about" className="relative min-h-screen bg-gradient-to-br from-slate-900 via-black to-slate-800 flex flex-col justify-center items-center py-24 px-4 overflow-hidden">
       
       {/* Animated background elements */}
       <div className="absolute inset-0 bg-[url('/imgs/bg-1.jpg')] bg-cover bg-center opacity-20" />

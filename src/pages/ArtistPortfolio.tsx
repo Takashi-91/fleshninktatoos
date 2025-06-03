@@ -190,10 +190,7 @@ const ArtistPortfolio = () => {
               transition={{ duration: 0.8, delay: 0.6 }}
               className="relative mb-8"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-2xl" />
-              <p className="text-gray-200 text-lg leading-relaxed max-w-lg p-6 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-xl">
-                {artist.description}
-              </p>
+             
             </motion.div>
           </div>
         </motion.div>
@@ -240,7 +237,7 @@ const ArtistPortfolio = () => {
               className="group cursor-pointer"
               onClick={() => setSelectedImage(img)}
             >
-              <Card className="overflow-hidden shadow-2xl border-0 bg-white/10 backdrop-blur-lg border border-white/20 rounded-3xl">
+              <Card className="overflow-hidden shadow-2xl border-0 bg-white/10 backdrop-blur-lg border-white/20 rounded-3xl">
                 <CardContent className="p-0 relative">
                   <img
                     src={img}

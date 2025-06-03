@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'; 
-import React from 'react';
+
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaInstagram, FaFacebookF, FaWhatsapp, FaClock } from 'react-icons/fa';
 
 const containerVariants = {
@@ -28,6 +28,7 @@ const itemVariants = {
 
 const Contact = () => {
   return (
+    <section id ="contact">
     <section className="relative min-h-screen bg-gradient-to-br from-slate-900 via-black to-slate-800 py-24 px-4 overflow-hidden" id="contact">
       <div className="absolute inset-0 bg-[url('/imgs/bg-1.jpg')] bg-cover bg-center opacity-20" />
       <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-black/80 to-black/95" />
@@ -81,11 +82,11 @@ const Contact = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="max-w-7xl w-full flex flex-col lg:flex-row items-start gap-12 lg:gap-8"
+          className="max-w-7xl w-full flex flex-col lg:flex-row items-start gap-4"
         >
           {/* Left Column: Contact Info */}
-          <motion.div variants={itemVariants} className="flex-1 space-y-6">
-            <div className="space-y-4 w-full mr-32 md:w-1/2">
+          <motion.div variants={itemVariants} className="flex-1 space-y-6 flex justify-center md:justify-start">
+            <div className="space-y-4 w-full sm:max-w-md md:ml-6">
               {[{ icon: FaMapMarkerAlt, label: "Address", value: "123 Ink Street, Pretoria, 0001", color: "from-red-500 to-red-600" },
                 { icon: FaPhone, label: "Phone", value: "+27 (012) 345-6789", color: "from-green-500 to-green-600" },
                 { icon: FaEnvelope, label: "Email", value: "info@fleshinktattoos.com", color: "from-blue-500 to-blue-600" },
@@ -104,24 +105,23 @@ const Contact = () => {
                   </div>
                 </motion.div>
               ))}
-            </div>
-
-            <div className="pt-4">
-              <h4 className="text-lg font-bold text-white mb-4 deadwood-font uppercase">Follow Us</h4>
-              <div className="flex space-x-4">
-                {[{ icon: FaInstagram, href: "#", color: "from-pink-500 to-purple-600" },
-                  { icon: FaFacebookF, href: "#", color: "from-blue-500 to-blue-600" },
-                  { icon: FaWhatsapp, href: "#", color: "from-green-500 to-green-600" }].map((social, idx) => (
-                  <motion.a
-                    key={idx}
-                    href={social.href}
-                    whileHover={{ scale: 1.2, rotate: 15 }}
-                    whileTap={{ scale: 0.9 }}
-                    className={`w-12 h-12 bg-gradient-to-br ${social.color} rounded-full flex items-center justify-center shadow-lg hover:shadow-2xl transition-all duration-300`}
-                  >
-                    <social.icon className="w-5 h-5 text-white" />
-                  </motion.a>
-                ))}
+              <div className="pt-6">
+                <h4 className="text-lg font-bold text-white mb-4 deadwood-font uppercase">Follow Us</h4>
+                <div className="flex space-x-4">
+                  {[{ icon: FaInstagram, href: "#", color: "from-pink-500 to-purple-600" },
+                    { icon: FaFacebookF, href: "#", color: "from-blue-500 to-blue-600" },
+                    { icon: FaWhatsapp, href: "#", color: "from-green-500 to-green-600" }].map((social, idx) => (
+                    <motion.a
+                      key={idx}
+                      href={social.href}
+                      whileHover={{ scale: 1.2, rotate: 15 }}
+                      whileTap={{ scale: 0.9 }}
+                      className={`w-12 h-12 bg-gradient-to-br ${social.color} rounded-full flex items-center justify-center shadow-lg hover:shadow-2xl transition-all duration-300`}
+                    >
+                      <social.icon className="w-5 h-5 text-white" />
+                    </motion.a>
+                  ))}
+                </div>
               </div>
             </div>
           </motion.div>
@@ -177,6 +177,7 @@ const Contact = () => {
           </div>
         </motion.div>
       </div>
+    </section>
     </section>
   );
 };

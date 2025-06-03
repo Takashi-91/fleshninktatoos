@@ -41,7 +41,7 @@ const cardVariants = {
 
 const ArtistSection = () => {
   return (
-    <section className="relative py-24 bg-gradient-to-br from-slate-900 via-black to-slate-800 overflow-hidden">
+    <section id="artists" className="relative py-24 bg-gradient-to-br from-slate-900 via-black to-slate-800 overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0 bg-[url('/imgs/bg-2.png')] bg-cover bg-center opacity-20" />
       <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-black/80 to-black/95" />
