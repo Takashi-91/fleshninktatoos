@@ -7,7 +7,7 @@ export const artistsData = [
     image: '/imgs/artist1.jpg',
     description: 'For Appointment Bookings Contact:0727503212✍🏾Tattoo,Drawings.',
     instagram: 'https://instagram.com/dylanbrownink',
-    gallery: ['/gallery/jordan1.jpg', '/gallery/jordan2.jpg', '/gallery/jordan3.jpg', '/gallery/jordan4.jpg', 
+    gallery: ['/imgs/pic3.jpg', '/gallery/jordan2.jpg', '/gallery/jordan3.jpg', '/gallery/jordan4.jpg', 
     '/gallery/jordan5.jpg', '/gallery/jordan6.jpg', '/gallery/jordan7.jpg', '/gallery/jordan8.jpg'],
   },
   {
