@@ -137,7 +137,7 @@ const ServicesSection = () => {
             viewport={{ once: true, margin: "-100px" }}
             className="w-full lg:w-1/2 space-y-8"
           >
-            {services.map((service, idx) => (
+            {services.map((service) => (
               <motion.div
                 key={service.id}
                 variants={cardVariants}

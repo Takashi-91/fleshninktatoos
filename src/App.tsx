@@ -17,7 +17,6 @@ function App() {
             <Hero />
                 <About/>
             <ArtistSection />
-        
             <ServicesSection />
             <Gallery/>
             <Contact/>
