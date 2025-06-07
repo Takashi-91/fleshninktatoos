@@ -6,10 +6,12 @@ import Contact from './pages/Contact';
 import ArtistSection from './components/ArtistSection';
 import ServicesSection from './components/ServicesSection';
 import ArtistPortfolio from './pages/ArtistPortfolio';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import About from './pages/About';
 function App() {
   return (
     <>
+    <SpeedInsights/>
       <Navbar />
       <Routes>
         <Route path="/" element={
