@@ -211,24 +211,26 @@ const Hero = () => {
                   className="flex flex-col sm:flex-row gap-4 mb-8"
                 >
                   <motion.button
-                    whileHover={{ 
-                      scale: 1.05,
-                      boxShadow: "0 0 30px rgba(34, 197, 94, 0.4)"
-                    }}
-                    whileTap={{ scale: 0.95 }}
-                    className="group px-8 py-4 bg-gradient-to-r from-green-500 to-green-600 text-white font-bold uppercase text-sm rounded-full hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-lg border border-green-400/30"
-                  >
-                    <span className="flex items-center justify-center gap-3">
-                      <FaCalendarAlt className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                      Book a Session
-                      <motion.span
-                        animate={{ x: [0, 5, 0] }}
-                        transition={{ duration: 1.5, repeat: Infinity }}
-                      >
-                        →
-                      </motion.span>
-                    </span>
-                  </motion.button>
+  onClick={() => window.open("https://wa.me/+270680783232", "_blank")} // Replace with your number
+  whileHover={{ 
+    scale: 1.05,
+    boxShadow: "0 0 30px rgba(34, 197, 94, 0.4)"
+  }}
+  whileTap={{ scale: 0.95 }}
+  className="group px-8 py-4 bg-gradient-to-r from-green-500 to-green-600 text-white font-bold uppercase text-sm rounded-full hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-lg border border-green-400/30"
+>
+  <span className="flex items-center justify-center gap-3">
+    <FaCalendarAlt className="w-4 h-4 group-hover:scale-110 transition-transform" />
+    Book a Session
+    <motion.span
+      animate={{ x: [0, 5, 0] }}
+      transition={{ duration: 1.5, repeat: Infinity }}
+    >
+      →
+    </motion.span>
+  </span>
+</motion.button>
+
 
                   <motion.button
                     whileHover={{ 
