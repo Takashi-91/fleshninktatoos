@@ -124,7 +124,7 @@ const Gallery = () => {
               <img
                 src={images.find(img => img.id === selectedImage)?.src}
                 alt={`Gallery ${selectedImage}`}
-                className="w-full h-auto lg:h-1/2 rounded-lg shadow-2xl"
+                className="w-full h-auto rounded-lg shadow-2xl"
               />
               <motion.button
                   initial={{ opacity: 0, y: 20 }}

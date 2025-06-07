@@ -12,3 +12,6 @@
 .flip-container {
   perspective: 1000px;
 }
+html {
+  scroll-behavior: smooth;
+}

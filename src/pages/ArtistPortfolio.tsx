@@ -120,7 +120,7 @@ const ArtistPortfolio = () => {
               className="inline-flex items-center gap-3 px-6 py-3 bg-white/10 backdrop-blur-lg border border-white/20 rounded-full text-white hover:bg-white/15 transition-all duration-300 shadow-lg"
             >
               <FaArrowLeft className="w-4 h-4" />
-              <span className="font-semibold">Back to Artists</span>
+              <span className="font-semibold">Back </span>
             </motion.button>
           </Link>
         </motion.div>

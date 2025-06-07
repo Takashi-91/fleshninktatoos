@@ -211,7 +211,7 @@ const Hero = () => {
                   className="flex flex-col sm:flex-row gap-4 mb-8"
                 >
                   <motion.button
-  onClick={() => window.open("https://wa.me/+270680783232", "_blank")} // Replace with your number
+  onClick={() => window.open("https://wa.me/+27814071917", "_blank")} // Replace with your number
   whileHover={{ 
     scale: 1.05,
     boxShadow: "0 0 30px rgba(34, 197, 94, 0.4)"
@@ -232,16 +232,19 @@ const Hero = () => {
 </motion.button>
 
 
-                  <motion.button
-                    whileHover={{ 
-                      scale: 1.05,
-                      backgroundColor: "rgba(255, 255, 255, 0.15)"
-                    }}
-                    whileTap={{ scale: 0.95 }}
-                    className="px-8 py-4 bg-white/10 backdrop-blur-lg border border-white/20 text-white font-bold uppercase text-sm rounded-full hover:bg-white/15 transition-all duration-300 shadow-lg"
-                  >
-                    View Gallery
-                  </motion.button>
+                 <a href="#gallery">
+  <motion.button
+    whileHover={{ 
+      scale: 1.05,
+      backgroundColor: "rgba(255, 255, 255, 0.15)"
+    }}
+    whileTap={{ scale: 0.95 }}
+    className="px-8 py-4 bg-white/10 backdrop-blur-lg border border-white/20 text-white font-bold uppercase text-sm rounded-full hover:bg-white/15 transition-all duration-300 shadow-lg"
+  >
+    View Gallery
+  </motion.button>
+</a>
+
                 </motion.div>
               </motion.div>
             </div>
@@ -257,9 +260,9 @@ const Hero = () => {
          <div className="hidden lg:flex flex-row lg:flex-col gap-4 ">
 
               {[
-                { icon: FaInstagram, href: "https://instagram.com/yourprofile", color: "white" },
-                { icon: FaFacebookF, href: "https://facebook.com/yourpage", color: "white" },
-                { icon: FaWhatsapp, href: "https://wa.me/yourwhatsappnumber", color: "white" }
+                { icon: FaInstagram, href: "https://www.instagram.com/fleshninktattoos/", color: "white" },
+                { icon: FaFacebookF, href: "https://www.facebook.com/fleshninktattoos/", color: "white" },
+                { icon: FaWhatsapp, href: "https://wa.me/+27814071917", color: "white" }
               ].map((social, idx) => (
                 <motion.a
                   key={idx}

@@ -1,31 +1,33 @@
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/navbar';
-import Hero from './components/Hero';
 import Gallery from './components/Gallery';
 import Contact from './pages/Contact';
-import ArtistSection from './components/ArtistSection';
-import ServicesSection from './components/ServicesSection';
+import Services from './components/ServicesSection';
 import ArtistPortfolio from './pages/ArtistPortfolio';
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import Home from './pages/Home';
 import About from './pages/About';
+import Footer from './components/Footer';
+
+
+
 function App() {
   return (
     <>
-    <SpeedInsights/>
       <Navbar />
       <Routes>
-        <Route path="/" element={
-          <>
-            <Hero />
-                <About/>
-            <ArtistSection />
-            <ServicesSection />
-            <Gallery/>
-            <Contact/>
-          </>
-        } />
+        {/* Home page */}
+        <Route path="/" element={<Home />} />
+
+        {/* Separate routes for each section */}
+        <Route path="/about" element={<About />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/gallery" element={<Gallery />} />
+        <Route path="/contact" element={<Contact />} />
+
+        {/* Dynamic artist portfolio page */}
         <Route path="/artist/:id" element={<ArtistPortfolio />} />
       </Routes>
+      <Footer />
     </>
   );
 }

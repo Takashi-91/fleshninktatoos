@@ -64,7 +64,7 @@ const textVariants = {
 
 const ServicesSection = () => {
   return (
-    <section className="relative py-24 bg-gradient-to-br from-slate-900 via-black to-slate-800 overflow-hidden">
+    <section id='services' className="relative py-24 bg-gradient-to-br from-slate-900 via-black to-slate-800 overflow-hidden">
       {/* Animated background elements */}
 <div className="absolute inset-0 bg-[url('/imgs/bg-1.jpg')] bg-cover bg-center opacity-20" />
       <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-black/80 to-black/95" />
@@ -260,6 +260,15 @@ const ServicesSection = () => {
                 <span className="text-green-400 font-semibold">Rooted in the heart of Pretoria</span>, our studio celebrates local creativity and cultural expression through the art of tattooing. We are a proudly South African-owned business offering a safe, clean, and professional space where your ideas come to life.
               </p>
             </motion.div>
+<a href="/docs/Aftercare FNIT.pdf" download>
+  <motion.button
+    whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.15)" }}
+    whileTap={{ scale: 0.95 }}
+    className="px-8 py-4 bg-white/10 backdrop-blur-lg border border-white/20 text-white font-bold uppercase text-sm rounded-full hover:bg-white/15 transition-all duration-300 shadow-lg"
+  >
+    Download Aftercare Instructions
+  </motion.button>
+</a>
 
             {/* Decorative elements */}
             <motion.div
@@ -288,22 +297,45 @@ const ServicesSection = () => {
         </div>
 
         {/* Bottom decorative wave */}
-        <motion.div
+       <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="flex justify-center mt-20"
+          transition={{ duration: 0.8, delay: 1 }}
+          className="flex justify-center mt-0"
         >
-          <svg width="200" height="60" viewBox="0 0 200 60" className="text-green-400">
+          <svg width="300" height="80" viewBox="0 0 300 80" className="text-green-400">
             <motion.path
               initial={{ pathLength: 0 }}
               whileInView={{ pathLength: 1 }}
-              transition={{ duration: 2, delay: 1 }}
-              d="M10 30 Q50 10 100 30 Q150 50 190 30"
+              transition={{ duration: 3, delay: 1.2 }}
+              d="M20 40 Q75 15 150 40 Q225 65 280 40"
               stroke="currentColor"
-              strokeWidth="3"
+              strokeWidth="2"
               fill="none"
               strokeLinecap="round"
+              opacity="0.6"
+            />
+            <motion.path
+              initial={{ pathLength: 0 }}
+              whileInView={{ pathLength: 1 }}
+              transition={{ duration: 3, delay: 1.5 }}
+              d="M20 50 Q75 25 150 50 Q225 75 280 50"
+              stroke="currentColor"
+              strokeWidth="4.5"
+              fill="none"
+              strokeLinecap="round"
+              opacity="0.4"
+            />
+            <motion.path
+              initial={{ pathLength: 0 }}
+              whileInView={{ pathLength: 1 }}
+              transition={{ duration: 3, delay: 1.5 }}
+              d="M20 50 Q75 25 150 50 Q225 75 280 50"
+              stroke="currentColor"
+              strokeWidth="6.5"
+              fill="none"
+              strokeLinecap="round"
+              opacity="0.2"
             />
           </svg>
         </motion.div>

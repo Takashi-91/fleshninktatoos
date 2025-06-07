@@ -169,7 +169,7 @@ const About = () => {
                 Flesh-n-Ink
               </span>
               <span className="text-white text-xl sm:text-2xl lg:text-3xl mt-2 block font-bold tracking-wide">
-                PRETORIA'S PREMIER SOUTH AFRICAN-OWNED TATTOO STUDIO
+                PRETORIA'S PREMIER TATTOO STUDIO
               </span>
             </motion.h2>
 
