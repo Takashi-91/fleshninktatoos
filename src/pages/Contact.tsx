@@ -1,5 +1,10 @@
-import { motion } from 'framer-motion'; 
-import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock } from 'react-icons/fa';
+import { motion } from 'framer-motion';
+import {
+  FaPhone,
+  FaEnvelope,
+  FaMapMarkerAlt,
+  FaClock,
+} from 'react-icons/fa';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -7,9 +12,9 @@ const containerVariants = {
     opacity: 1,
     transition: {
       staggerChildren: 0.2,
-      delayChildren: 0.3
-    }
-  }
+      delayChildren: 0.3,
+    },
+  },
 };
 
 const itemVariants = {
@@ -20,9 +25,9 @@ const itemVariants = {
     scale: 1,
     transition: {
       duration: 0.8,
-      ease: "easeOut"
-    }
-  }
+      ease: 'easeOut',
+    },
+  },
 };
 
 const Contact = () => {
@@ -32,25 +37,27 @@ const Contact = () => {
         <div className="absolute inset-0 bg-[url('/imgs/bg-1.jpg')] bg-cover bg-center opacity-20" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-black/80 to-black/95" />
 
+        {/* Animated Background Blobs */}
         <motion.div
           animate={{ x: [0, 120, 0], y: [0, -60, 0], opacity: [0.2, 0.5, 0.2] }}
-          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+          transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }}
           className="absolute top-20 right-20 w-48 h-48 bg-green-500/20 rounded-full blur-xl"
         />
         <motion.div
           animate={{ x: [0, -80, 0], y: [0, 80, 0], opacity: [0.3, 0.6, 0.3] }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+          transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
           className="absolute bottom-32 left-20 w-40 h-40 bg-blue-500/20 rounded-full blur-xl"
         />
 
+        {/* Content Container */}
         <div className="relative z-10 w-full flex flex-col items-center">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: -30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="text-center mb-5"
           >
-            <motion.h2 
+            <motion.h2
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -72,14 +79,14 @@ const Contact = () => {
             </motion.h2>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: '-100px' }}
             className="max-w-7xl w-full flex flex-col lg:flex-row gap-12 px-6"
           >
-            {/* QR Code Section */}
+            {/* QR Code */}
             <div className="hidden sm:flex justify-center items-center rounded-md lg:w-1/2">
               <div className="text-center">
                 <img
@@ -93,45 +100,84 @@ const Contact = () => {
               </div>
             </div>
 
-            {/* Contact Info Section */}
+            {/* Contact Info */}
             <div className="text-white lg:w-1/2">
               <h1 className="text-2xl font-semibold capitalize lg:text-3xl">Get a Quote</h1>
-              <p className="max-w-xl mt-6">Ask us everything and we would love to hear from you</p>
+              <p className="max-w-xl mt-6">
+                Ask us everything and we would love to hear from you
+              </p>
 
-              <motion.div 
+              <motion.div
                 variants={containerVariants}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: true, margin: '-100px' }}
                 className="max-w-7xl w-full flex flex-col gap-12 lg:gap-8 mt-6"
               >
-             
-                {/* Contact Info List */}
-                <motion.div variants={itemVariants} className="space-y-4">
-                  {[{ icon: FaMapMarkerAlt, label: "Address", value: "325 Paul Kruger x Van Heerden Capital Park, Pretoria ", color: "from-green-500 to-black" },
-                    { icon: FaPhone, label: "Phone", value: "+27 81 407 1917", color: "from-green-500 to-black" },
-                    { icon: FaEnvelope, label: "Email", value: "Email: fleshninktattoos@gmail.com", color: "from-green-500 to-black" },
-                    { icon: FaClock, label: "Hours", value: "Appointment Only", color: "from-green-500 to-black" }].map((contact, idx) => (
-                    <motion.div 
+                {/* Contact Details */}
+                <motion.div variants={itemVariants} className="space-y-2">
+                  {[
+                    {
+                      icon: FaMapMarkerAlt,
+                      label: 'Address',
+                      value: '325 Paul Kruger x Van Heerden Capital Park',
+                      color: 'from-green-500 to-black',
+                      link: 'https://maps.app.goo.gl/AtbDCyVVJnHKQbW76',
+                    },
+                    {
+                      icon: FaPhone,
+                      label: 'Phone',
+                      value: '+27 81 407 1917',
+                      color: 'from-green-500 to-black',
+                    },
+                    {
+                      icon: FaEnvelope,
+                      label: 'Email',
+                      value: 'fleshninktattoos@gmail.com',
+                      color: 'from-green-500 to-black',
+                    },
+                    {
+                      icon: FaClock,
+                      label: 'Hours',
+                      value: 'Appointment Only',
+                      color: 'from-green-500 to-black',
+                    },
+                  ].map((contact, idx) => (
+                    <motion.div
                       key={idx}
                       whileHover={{ x: 10, scale: 1.02 }}
-                      className="flex items-center space-x-4 p-4 "
+                      className="flex items-center space-x-4 p-4"
                     >
-                      <div className={`w-12 h-12 bg-gradient-to-br ${contact.color} rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                        <contact.icon className="w-5 h-5 text-white" />
+                      <div
+                        className={`w-12 h-12 bg-gradient-to-br ${contact.color} rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}
+                      >
+                        <contact.icon className="w-10 h-5 text-white" />
                       </div>
                       <div>
-                        <p className="text-gray-400 text-xs uppercase tracking-wider">{contact.label}</p>
-                        <p className="text-white font-semibold">{contact.value}</p>
+                        <p className="text-gray-400 text-xs uppercase tracking-wider">
+                          {contact.label}
+                        </p>
+                        {contact.link ? (
+                          <a
+                            href={contact.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-white font-semibold underline underline-offset-4 hover:text-green-400 transition"
+                          >
+                            {contact.value}
+                          </a>
+                        ) : (
+                          <p className="text-white font-semibold">{contact.value}</p>
+                        )}
                       </div>
                     </motion.div>
                   ))}
                 </motion.div>
-
               </motion.div>
             </div>
           </motion.div>
 
+          {/* Dots Animation */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
