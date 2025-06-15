@@ -6,20 +6,25 @@ import "../styles/fonts.css";
 const Hero = () => {
   const [showContent, setShowContent] = useState<boolean>(false);
   const videoRef = useRef<HTMLVideoElement>(null);
-
-  const flipControls = useAnimation();
   const headingRef = useRef<HTMLDivElement>(null);
+  const flipControls = useAnimation();
 
+  // Play video for 3 seconds, then show content
   useEffect(() => {
     const video = videoRef.current;
-    const handleVideoEnd = () => setShowContent(true);
+
     if (video) {
       video.play().catch((err) => console.error("Error playing video:", err));
-      video.addEventListener("ended", handleVideoEnd);
+
+      const timer = setTimeout(() => {
+        video.pause(); // Stop playback
+        setShowContent(true); // Show content
+      }, 3000);
+
+      return () => {
+        clearTimeout(timer);
+      };
     }
-    return () => {
-      if (video) video.removeEventListener("ended", handleVideoEnd);
-    };
   }, []);
 
   // Flip animation function
@@ -30,30 +35,27 @@ const Hero = () => {
     });
   };
 
-  // Animate slide-in first, then start flip loop
+  // Animate content when it's shown
   useEffect(() => {
     if (!showContent) return;
 
     let cleanupFn: (() => void) | undefined;
 
     async function runAnimations() {
-      // Set initial state off-screen right and invisible
       flipControls.set({ opacity: 0, x: 100 });
 
-      // Slide in from right
       await flipControls.start({
         opacity: 1,
         x: 0,
         transition: { duration: 1, ease: "easeOut" },
       });
 
-      // Start flip animation loop every 10 seconds
       playFlip();
+
       const interval = setInterval(() => {
         playFlip();
-      }, 90000);
+      }, 90000); // every 90 seconds
 
-      // Return cleanup function to clear interval
       return () => clearInterval(interval);
     }
 
@@ -66,7 +68,7 @@ const Hero = () => {
     };
   }, [showContent]);
 
-  // Replay flip animation when heading scrolls back into view
+  // Replay flip on scroll into view
   useEffect(() => {
     if (!headingRef.current) return;
 

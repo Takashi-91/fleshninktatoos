@@ -7,6 +7,7 @@ import ArtistPortfolio from './pages/ArtistPortfolio';
 import Home from './pages/Home';
 import About from './pages/About';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollTop';
 
 
 
@@ -14,6 +15,8 @@ function App() {
   return (
     <>
       <Navbar />
+      <ScrollToTop />
+      {/* Main content */}
       <Routes>
         {/* Home page */}
         <Route path="/" element={<Home />} />

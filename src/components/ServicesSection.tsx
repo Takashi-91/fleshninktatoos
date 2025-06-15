@@ -1,27 +1,28 @@
 import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
-import { Scissors, SquarePen, PenTool } from 'lucide-react';
+import { IconComponents, IconComponents2, IconComponents3} from '@/components/ui/icons';
+
 
 const services = [
   {
     id: 1,
     title: 'Custom Tattoos',
     description: 'Personalized designs created specifically for you, reflecting your ideas and vision.',
-    icon: SquarePen,
-    cover: '/imgs/pic-1.png',
+    icon: IconComponents.TattooMachine,
+    cover: '/imgs/bg4.jpg',
   },
   {
     id: 2,
     title: 'Cover-Ups',
     description: 'Transform existing tattoos with creative solutions that seamlessly integrate new designs.',
-    icon: Scissors,
+    icon: IconComponents2.Scissors,
     cover: '/imgs/pic-2.jpg',
   },
   {
     id: 3,
     title: 'Touch-Ups',
     description: 'Refresh and revitalize your existing tattoos to maintain their vibrant appearance.',
-    icon: PenTool,
+    icon: IconComponents3.PenTool,
     cover: '/imgs/bg-image-1.jpg',
   },
 ];
@@ -149,7 +150,7 @@ const ServicesSection = () => {
                 className="group"
               >
                 <Card
-                  className="relative rounded-3xl overflow-hidden shadow-2xl border-0 bg-white/10 backdrop-blur-lg border border-white/20"
+                  className="relative rounded-3xl overflow-hidden shadow-2xl bg-white/10 backdrop-blur-lg border border-white/20"
                   style={{
                     backgroundImage: `url(${service.cover})`,
                     backgroundSize: 'cover',
@@ -168,7 +169,7 @@ const ServicesSection = () => {
                         whileHover={{ scale: 1.2, rotate: 15 }}
                         className="flex-shrink-0 w-16 h-16 bg-green-500/20 backdrop-blur-sm rounded-2xl flex items-center justify-center border border-green-400/30 group-hover:bg-green-500/30 transition-colors duration-300"
                       >
-                        <service.icon className="h-8 w-8 text-green-400 group-hover:text-green-300 transition-colors" />
+                        <service.icon className="h-10 w-10 text-green-400 group-hover:text-green-300 transition-colors" />
                       </motion.div>
                       
                       <div className="flex-1">

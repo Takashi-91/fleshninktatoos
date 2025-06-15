@@ -18,8 +18,8 @@ export const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: 'Home', path: '#hero' },
-    { name: 'About', path: '#about' },
+    { name: 'Home', path: '/#hero' },
+    { name: 'About', path: '/#about' },
     { name: 'Gallery', path: '#gallery' },
     { name: 'Services', path: '#services' },
     { name: 'Contact', path: '#contact' },
@@ -136,6 +136,7 @@ export const Navbar = () => {
               animate="open"
               exit="closed"
               className="md:hidden pt-4 pb-2"
+              
             >
               {navLinks.map((link, index) => (
                 <motion.div

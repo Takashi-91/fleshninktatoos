@@ -37,7 +37,11 @@ const ArtistPortfolio = () => {
 
   if (!artist) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-slate-900 via-black to-slate-800 text-white relative overflow-hidden">
+    <div className="min-h-screen relative overflow-hidden text-white">
+      {/* 👇 Add this block here — before your main content */}
+      {/* Animated background elements */}
+      <div className="absolute inset-0 bg-[url('/imgs/bg-1.jpg')] bg-cover bg-center opacity-20" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-black/80 to-black/95" />
         {/* Floating orbs */}
         <motion.div
           animate={{ 

@@ -80,7 +80,7 @@ const Contact = () => {
             className="max-w-7xl w-full flex flex-col lg:flex-row gap-12 px-6"
           >
             {/* QR Code Section */}
-            <div className="hidden sm:flex justify-center items-center lg:w-1/2">
+            <div className="hidden sm:flex justify-center items-center rounded-md lg:w-1/2">
               <div className="text-center">
                 <img
                   src="/imgs/qrcode3.png"
@@ -105,12 +105,13 @@ const Contact = () => {
                 viewport={{ once: true, margin: "-100px" }}
                 className="max-w-7xl w-full flex flex-col gap-12 lg:gap-8 mt-6"
               >
+             
                 {/* Contact Info List */}
                 <motion.div variants={itemVariants} className="space-y-4">
-                  {[{ icon: FaMapMarkerAlt, label: "Address", value: "123 Ink Street, Pretoria, 0001", color: "from-green-500 to-black" },
-                    { icon: FaPhone, label: "Phone", value: "+27 (012) 345-6789", color: "from-green-500 to-black" },
-                    { icon: FaEnvelope, label: "Email", value: "info@fleshinktattoos.com", color: "from-green-500 to-black" },
-                    { icon: FaClock, label: "Hours", value: "Mon-Sat: 9AM-6PM", color: "from-green-500 to-black" }].map((contact, idx) => (
+                  {[{ icon: FaMapMarkerAlt, label: "Address", value: "325 Paul Kruger x Van Heerden Capital Park, Pretoria ", color: "from-green-500 to-black" },
+                    { icon: FaPhone, label: "Phone", value: "+27 81 407 1917", color: "from-green-500 to-black" },
+                    { icon: FaEnvelope, label: "Email", value: "Email: fleshninktattoos@gmail.com", color: "from-green-500 to-black" },
+                    { icon: FaClock, label: "Hours", value: "Appointment Only", color: "from-green-500 to-black" }].map((contact, idx) => (
                     <motion.div 
                       key={idx}
                       whileHover={{ x: 10, scale: 1.02 }}
