@@ -57,7 +57,7 @@ export const Navbar = () => {
           {/* Logo */}
           <motion.div className="flex items-center space-x-3">
             <motion.div
-              className="relative h-14 w-14 bg-[url('/imgs/logo-3.png')] bg-cover bg-center rounded-full border-2 bg-white"
+              className="relative h-10 w-10 bg-[url('/imgs/logo-3.png')] bg-cover bg-center rounded-full border-2 bg-white"
               whileHover={{ rotate: 360 }}
               transition={{ duration: 0.6, ease: 'easeInOut' }}
             />

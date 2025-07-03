@@ -6,7 +6,7 @@ function Footer() {
   return (
     <footer className="bg-black text-white">
       
-      <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8 ">
+      <div className="mx-auto w-full max-w-screen-xl font-bold p-4 py-6 lg:py-8 ">
         <div className="md:flex md:justify-between">
           {/* Logo Section */}
           <div className="mb-6 md:mb-0">
@@ -14,7 +14,7 @@ function Footer() {
               <div className="relative h-14 w-14 bg-[url('/imgs/logo-3.png')] bg-cover bg-center inset-0 rounded-full border-2 bg-white"
               />
             </a>
-            <p className="mt-4 text-lg text-white deadwood-font">
+            <p className="mt-4 text-lg text-white ">
             Flesh-n-Ink<span className="text-green-600"> Tattoo Studio</span>
         </p>
           </div>

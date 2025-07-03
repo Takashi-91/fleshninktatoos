@@ -58,7 +58,9 @@ export default {
   		animation: {
   			'fade-in': 'fadeIn 0.5s ease-in-out',
   			'slide-up': 'slideUp 0.5s ease-out',
-  			'scale-in': 'scaleIn 0.3s ease-out'
+  			'scale-in': 'scaleIn 0.3s ease-out',
+			'infinite-scroll': 'infinite-scroll 20s linear infinite',
+        'neon-blink': 'neon-blink 3s ease-in-out infinite',
   		},
   		keyframes: {
   			fadeIn: {
@@ -88,7 +90,11 @@ export default {
   					transform: 'scale(1)',
   					opacity: '1'
   				}
-  			}
+  			},
+			 'infinite-scroll': {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(-100%)' },
+        },
   		},
   		borderRadius: {
   			lg: 'var(--radius)',

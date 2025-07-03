@@ -149,23 +149,26 @@ const Contact = () => {
                       className="flex items-center space-x-4 p-4"
                     >
                       <div
-                        className={`w-12 h-12 bg-gradient-to-br ${contact.color} rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}
-                      >
-                        <contact.icon className="w-10 h-5 text-white" />
-                      </div>
+  className={`w-14 h-14 flex-shrink-0 bg-gradient-to-br ${contact.color} rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}
+>
+  <contact.icon className="w-6 h-6 text-white" />
+</div>
+
                       <div>
                         <p className="text-gray-400 text-xs uppercase tracking-wider">
                           {contact.label}
                         </p>
                         {contact.link ? (
                           <a
-                            href={contact.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-white font-semibold underline underline-offset-4 hover:text-green-400 transition"
-                          >
-                            {contact.value}
-                          </a>
+  href={contact.link}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="block text-white font-semibold underline underline-offset-4 hover:text-green-400 transition"
+>
+  {contact.value}
+</a>
+
+                        
                         ) : (
                           <p className="text-white font-semibold">{contact.value}</p>
                         )}

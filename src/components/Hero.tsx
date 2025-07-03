@@ -1,31 +1,52 @@
-import { motion, useAnimation } from "framer-motion";
+import { motion, useAnimation, AnimatePresence } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import { FaInstagram, FaFacebookF, FaWhatsapp, FaCalendarAlt } from "react-icons/fa";
 import "../styles/fonts.css";
 
 const Hero = () => {
   const [showContent, setShowContent] = useState<boolean>(false);
+  const [showVideo, setShowVideo] = useState(true);
+
   const videoRef = useRef<HTMLVideoElement>(null);
   const headingRef = useRef<HTMLDivElement>(null);
   const flipControls = useAnimation();
 
+  // Images for background cycling
+  const images = ["/imgs/bg4.jpg"]; // replace with your tattoo images
+  const [currentImage, setCurrentImage] = useState(0);
+
   // Play video for 3 seconds, then show content
+useEffect(() => {
+  const video = videoRef.current;
+
+  if (video) {
+    video.play().catch((err) => console.error("Error playing video:", err));
+
+    const timer = setTimeout(() => {
+      video.pause(); // Stop playback
+      video.style.display = "none"; // Hide video completely
+setShowContent(true); // Show content
+// Show content
+      setShowVideo(false); // Hide video completely
+    }, 3000);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }
+}, []);
+
+
+  // Cycle background images when content is shown
   useEffect(() => {
-    const video = videoRef.current;
+    if (!showContent) return;
 
-    if (video) {
-      video.play().catch((err) => console.error("Error playing video:", err));
+    const interval = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % images.length);
+    }, 3000); // Change image every 10 seconds
 
-      const timer = setTimeout(() => {
-        video.pause(); // Stop playback
-        setShowContent(true); // Show content
-      }, 3000);
-
-      return () => {
-        clearTimeout(timer);
-      };
-    }
-  }, []);
+    return () => clearInterval(interval);
+  }, [showContent]);
 
   // Flip animation function
   const playFlip = () => {
@@ -89,6 +110,7 @@ const Hero = () => {
   }, []);
 
   return (
+    <section id="hero" className="relative">
     <div className="relative h-screen bg-black overflow-hidden">
       {/* Video Background */}
       <div className="absolute inset-0 w-full h-full">
@@ -124,6 +146,21 @@ const Hero = () => {
         />
       </div>
 
+      {/* Background Image Animation */}
+      {showContent && (
+        <AnimatePresence>
+          <motion.div
+            key={currentImage}
+            className="absolute inset-0 w-full h-full bg-cover bg-center z-0"
+            style={{ backgroundImage: `url(${images[currentImage]})` }}
+            initial={{ scale: 1.1, opacity: 0 }}
+            animate={{ scale: 1, opacity: 0.3 }} // adjust opacity as needed
+            exit={{ scale: 1.1, opacity: 0 }}
+            transition={{ duration: 1.5, ease: "easeInOut" }}
+          />
+        </AnimatePresence>
+      )}
+
       {/* Main Content */}
       {showContent && (
         <motion.div
@@ -133,7 +170,6 @@ const Hero = () => {
           className="relative z-10 flex flex-col justify-center h-full px-4 sm:px-8 md:px-24"
         >
           <div className="flex flex-col lg:flex-row items-center lg:items-center gap-12 w-full">
-            
             {/* Logo Section */}
             <motion.div 
               initial={{ opacity: 0, scale: 0.5, x: -100 }}
@@ -142,28 +178,26 @@ const Hero = () => {
               className="flex-shrink-0"
             >
               <div className="relative h-64 w-64 lg:h-80 lg:w-80 rounded-full border-2 bg-white">
-                {/* Animated rings */}
+                {/* Animated outer ring - rotates clockwise */}
                 <motion.div 
                   animate={{ rotate: 360 }}
                   transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
                   className="absolute inset-0 rounded-full border-2 border-green-400/30"
                 />
+                {/* Animated inner ring - rotates counter-clockwise */}
                 <motion.div 
                   animate={{ rotate: -360 }}
                   transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
                   className="absolute inset-2 rounded-full border border-green-500/20"
                 />
-                
-            
-                
-                {/* Logo */}
+                {/* Logo itself */}
                 <motion.div 
                   whileHover={{ scale: 1.05 }}
-                  className="relative h-full w-full bg-[url('/imgs/logo3.png')] bg-cover bg-center rounded-full border-4 border-white/30  "
+                  className="relative h-full w-full bg-[url('/imgs/logo3.png')] bg-cover bg-center rounded-full border-4 border-white/30"
                 />
-                
               </div>
             </motion.div>
+            <div className="hidden lg:block h-2" />
 
             {/* Content Section */}
             <div className="flex-1 text-center lg:text-left">
@@ -181,13 +215,16 @@ const Hero = () => {
                   <motion.h1
                     animate={flipControls}
                     style={{ transformStyle: "preserve-3d" }}
-                    className="deadwood-font text-4xl sm:text-6xl lg:text-7xl font-extrabold uppercase leading-none tracking-widest drop-shadow-2xl"
+                    className="deadwood-font text-3xl sm:text-6xl lg:text-6xl font-extrabold uppercase leading-none tracking-widest drop-shadow-2xl"
                   >
                     <span className="bg-gradient-to-r from-white via-green-100 to-white bg-clip-text text-transparent block">
                       FLESH-N-INK
                     </span>
                     <span className="bg-gradient-to-r from-green-400 to-green-600 bg-clip-text text-transparent block mt-2">
-                      TATTOOS
+                      TATTOO
+                    </span>
+                    <span className="bg-gradient-to-r from-white via-green-100 to-white bg-clip-text text-transparent block">
+                      STUDIO
                     </span>
                   </motion.h1>
                 </div>
@@ -198,7 +235,7 @@ const Hero = () => {
                   transition={{ duration: 0.8, delay: 0.8 }}
                   className="relative mb-8"
                 >
-                  <div className="absolute inset-0  rounded-2xl" />
+                  <div className="absolute inset-0 rounded-2xl" />
                   <p className="deadwood-font text-white text-xl sm:text-2xl lg:text-3xl max-w-lg p-4 rounded-2xl ">
                     <span className="bg-gradient-to-r from-green-400 to-green-500 bg-clip-text text-transparent">
                       Where Art Meets Skin
@@ -213,40 +250,38 @@ const Hero = () => {
                   className="flex flex-col sm:flex-row gap-4 mb-8"
                 >
                   <motion.button
-  onClick={() => window.open("https://wa.me/+27814071917", "_blank")} // Replace with your number
-  whileHover={{ 
-    scale: 1.05,
-    boxShadow: "0 0 30px rgba(34, 197, 94, 0.4)"
-  }}
-  whileTap={{ scale: 0.95 }}
-  className="group px-8 py-4 bg-gradient-to-r from-green-500 to-green-600 text-white font-bold uppercase text-sm rounded-full hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-lg border border-green-400/30"
->
-  <span className="flex items-center justify-center gap-3">
-    <FaCalendarAlt className="w-4 h-4 group-hover:scale-110 transition-transform" />
-    Book a Session
-    <motion.span
-      animate={{ x: [0, 5, 0] }}
-      transition={{ duration: 1.5, repeat: Infinity }}
-    >
-      →
-    </motion.span>
-  </span>
-</motion.button>
+                    onClick={() => window.open("https://wa.me/+27814071917", "_blank")}
+                    whileHover={{ 
+                      scale: 1.05,
+                      boxShadow: "0 0 30px rgba(34, 197, 94, 0.4)"
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                    className="group px-8 py-4 bg-gradient-to-r from-green-500 to-green-600 text-white font-bold uppercase text-sm rounded-full hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-lg border border-green-400/30"
+                  >
+                    <span className="flex items-center justify-center gap-3">
+                      <FaCalendarAlt className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                      Book a Session
+                      <motion.span
+                        animate={{ x: [0, 5, 0] }}
+                        transition={{ duration: 1.5, repeat: Infinity }}
+                      >
+                        →
+                      </motion.span>
+                    </span>
+                  </motion.button>
 
-
-                 <a href="#gallery">
-  <motion.button
-    whileHover={{ 
-      scale: 1.05,
-      backgroundColor: "rgba(255, 255, 255, 0.15)"
-    }}
-    whileTap={{ scale: 0.95 }}
-    className="px-8 py-4 bg-white/10 backdrop-blur-lg border border-white/20 text-white font-bold uppercase text-sm rounded-full hover:bg-white/15 transition-all duration-300 shadow-lg"
-  >
-    View Gallery
-  </motion.button>
-</a>
-
+                  <a href="#gallery">
+                    <motion.button
+                      whileHover={{ 
+                        scale: 1.05,
+                        backgroundColor: "rgba(255, 255, 255, 0.15)"
+                      }}
+                      whileTap={{ scale: 0.95 }}
+                      className="px-8 py-4 bg-white/10 backdrop-blur-lg border border-white/20 text-white font-bold uppercase text-sm rounded-full hover:bg-white/15 transition-all duration-300 shadow-lg"
+                    >
+                      View Gallery
+                    </motion.button>
+                  </a>
                 </motion.div>
               </motion.div>
             </div>
@@ -259,8 +294,7 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 1.2 }}
             className="absolute bottom-8 left-8 lg:right-8 lg:left-auto"
           >
-         <div className="hidden lg:flex flex-row lg:flex-col gap-4 ">
-
+            <div className="hidden lg:flex flex-row lg:flex-col gap-4 ">
               {[
                 { icon: FaInstagram, href: "https://www.instagram.com/fleshninktattoos/", color: "white" },
                 { icon: FaFacebookF, href: "https://www.facebook.com/fleshninktattoos/", color: "white" },
@@ -281,14 +315,10 @@ const Hero = () => {
               ))}
             </div>
           </motion.div>
-
         </motion.div>
       )}
-
-      {/* Loading Overlay */}
-     
-      
     </div>
+    </section>
   );
 };
 
