@@ -29,7 +29,7 @@ const About = () => {
     <section id="about" className="relative min-h-screen bg-gradient-to-br from-slate-900 via-black to-slate-800 flex flex-col justify-center items-center py-24 px-4 overflow-hidden">
       
       {/* Animated background elements */}
-      <div className="absolute inset-0 bg-[url('/imgs/bg-1.jpg')] bg-cover bg-center opacity-20" />
+      <div className="absolute inset-0 bg-[url('/web/bg-1.webp')] bg-cover bg-center opacity-20" />
       <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-black/80 to-black/95" />
       
       {/* Floating orbs for modern effect */}
@@ -105,7 +105,7 @@ const About = () => {
               className="bg-white/95 backdrop-blur-sm border-4 border-white/80 rounded-2xl shadow-2xl w-72 h-80 flex items-center justify-center mb-[-40px] z-10 rotate-2 relative group overflow-hidden"
             >
               <img 
-                src="/imgs/pic-1.png" 
+                src="/web/pic-1.webp" 
                 alt="Studio" 
                 className="w-full h-full object-cover rounded-xl transition-transform duration-500 group-hover:scale-110" 
               />
@@ -122,7 +122,7 @@ const About = () => {
               className="bg-white/95 backdrop-blur-sm border-4 border-white/80 rounded-2xl shadow-2xl w-72 h-52 flex items-center justify-center mt-[-20px] -rotate-3 relative z-0 group overflow-hidden"
             >
               <img 
-                src="/imgs/pic-2.jpg" 
+                src="/web/pic-2.webp" 
                 alt="Tattoo work" 
                 className="w-full h-full object-cover rounded-xl transition-transform duration-500 group-hover:scale-110" 
               />

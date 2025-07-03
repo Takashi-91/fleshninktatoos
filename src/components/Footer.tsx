@@ -11,7 +11,7 @@ function Footer() {
           {/* Logo Section */}
           <div className="mb-6 md:mb-0">
             <a href="https://example.com" className="flex items-center ml-10">
-              <div className="relative h-14 w-14 bg-[url('/imgs/logo-3.png')] bg-cover bg-center inset-0 rounded-full border-2 bg-white"
+              <div className="relative h-14 w-14 bg-[url('/web/logo3.webp')] bg-cover bg-center inset-0 rounded-full border-2 bg-white"
               />
             </a>
             <p className="mt-4 text-lg text-white ">

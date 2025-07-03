@@ -193,7 +193,7 @@ setShowContent(true); // Show content
                 {/* Logo itself */}
                 <motion.div 
                   whileHover={{ scale: 1.05 }}
-                  className="relative h-full w-full bg-[url('/imgs/logo3.png')] bg-cover bg-center rounded-full border-4 border-white/30"
+                  className="relative h-full w-full bg-[url('/web/logo3.webp')] bg-cover bg-center rounded-full border-4 border-white/30"
                 />
               </div>
             </motion.div>

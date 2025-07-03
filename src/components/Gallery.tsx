@@ -2,16 +2,16 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 
 const images = [
-  { id: 1, src: '/imgs/pic1.jpg' },
-  { id: 2, src: '/imgs/pic2.jpg' },
-  { id: 3, src: '/imgs/pic3.jpg' },
-  { id: 4, src: '/imgs/pic4.jpg' },
-  { id: 5, src: '/imgs/pic5.jpg' },
-  { id: 6, src: '/imgs/pic6.jpg' },
-  { id: 7, src: '/imgs/pic7.jpg' },
-  { id: 8, src: '/imgs/pic8.jpg' },
-  { id: 9, src: '/imgs/pic9.jpg' },
-  { id: 10, src: '/imgs/pic10.jpg' },
+  { id: 1, src: '/web/pic1.webp' },
+  { id: 2, src: '/web/pic2.webp' },
+  { id: 3, src: '/web/pic3.webp' },
+  { id: 4, src: '/web/pic4.webp' },
+  { id: 5, src: '/web/pic5.webp' },
+  { id: 6, src: '/web/pic6.webp' },
+  { id: 7, src: '/web/pic7.webp' },
+  { id: 8, src: '/web/pic8.webp' },
+  { id: 9, src: '/web/pic9.webp' },
+  { id: 10, src: '/web/pic10.webp' },
 ];
 
 const Gallery = () => {

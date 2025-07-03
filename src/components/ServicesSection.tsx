@@ -9,21 +9,21 @@ const services = [
     title: 'Custom Tattoos',
     description: 'Personalized designs created specifically for you, reflecting your ideas and vision.',
     icon: IconComponents.TattooMachine,
-    cover: '/imgs/bg4.jpg',
+    cover: '/web/bg4.webp',
   },
   {
     id: 2,
     title: 'Cover-Ups',
     description: 'Transform existing tattoos with creative solutions that seamlessly integrate new designs.',
     icon: IconComponents2.Scissors,
-    cover: '/imgs/pic-2.jpg',
+    cover: '/web/pic-2.webp',
   },
   {
     id: 3,
     title: 'Touch-Ups',
     description: 'Refresh and revitalize your existing tattoos to maintain their vibrant appearance.',
     icon: IconComponents3.PenTool,
-    cover: '/imgs/bg-image-1.jpg',
+    cover: '/web/bg-image-1.webp',
   },
 ];
 
@@ -67,7 +67,7 @@ const ServicesSection = () => {
   return (
     <section id='services' className="relative py-24 bg-gradient-to-br from-slate-900 via-black to-slate-800 overflow-hidden">
       {/* Animated background elements */}
-<div className="absolute inset-0 bg-[url('/imgs/bg-1.jpg')] bg-cover bg-center opacity-20" />
+<div className="absolute inset-0 bg-[url('/web/bg-1.webp')] bg-cover bg-center opacity-20" />
       <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-black/80 to-black/95" />
       
       {/* Floating orbs for modern effect */}
