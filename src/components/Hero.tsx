@@ -5,7 +5,7 @@ import "../styles/fonts.css";
 
 const Hero = () => {
   const [showContent, setShowContent] = useState<boolean>(false);
-  const [showVideo, setShowVideo] = useState(true);
+
 
   const videoRef = useRef<HTMLVideoElement>(null);
   const headingRef = useRef<HTMLDivElement>(null);
@@ -27,7 +27,7 @@ useEffect(() => {
       video.style.display = "none"; // Hide video completely
 setShowContent(true); // Show content
 // Show content
-      setShowVideo(false); // Hide video completely
+      
     }, 3000);
 
     return () => {
